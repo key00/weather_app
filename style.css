@@ -16,7 +16,7 @@ body {
 .container {
   position: relative;
   width: 25rem;
-  height: 34.6875rem;
+  height: 6.25rem;
   background-color: rgb(255, 143, 6);
   border-radius: 0.625rem;
   padding: 1.25rem;
@@ -139,5 +139,33 @@ body {
 
 .weather-details p {
   font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.weather-box,
+.weather-details,
+.error404 {
+  visibility: hidden;
+}
+
+.weather-box.active,
+.weather-details.active,
+.error404.active {
+  visibility: visible;
+}
+.error404 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  margin-top: 7rem;
+}
+.error404 img {
+  width: 60%;
+}
+
+.error404 p {
+  font-size: 1.25rem;
   font-weight: 500;
 }
