@@ -27,21 +27,22 @@
         <button class="bx bx-search-alt"></button>
       </div>
 
-      <div class="weather-box active">
+      <div class="weather-box">
         <div class="box">
           <div class="info-weather">
             <div class="weather">
+              <p class="location">Weather in <span class="city"></span></p>
               <img src="images/cloud.png" alt="weather-icon" />
-              <p class="temperature">28<span>°C</span></p>
+              <p class="temperature">50<span>°C</span></p>
 
               <p class="description">Broken Clouds</p>
-              <p class="feel">Feels like <span>25°C</span></p>
+              <p class="feel">Feels like <span class="feels">50°C</span></p>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="weather-details active">
+      <div class="weather-details">
         <div class="humidity">
           <i class="bx bx-water"></i>
           <div class="text">
@@ -63,55 +64,33 @@
         </div>
       </div>
 
-      <div class="future-forecast">
+      <div class="additional-info">
         <div class="weather-item">
-          <p class="day">Today</p>
           <div class="details">
-            <img src="images/clear.png" alt="weather-icon" />
-            <div class="temp">
-              <p>Max: <span class="max-temp">28 °C</span></p>
-              <p>Min: <span class="min-temp">30 °C</span></p>
+            <div class="box">
+              <p>
+                <i class="bx bxs-sun"></i> Sunrise:
+                <span class="sunrise"></span>
+              </p>
+              <p>
+                <i class="bx bxs-moon"></i> Sunset:
+                <span class="sunset"></span>
+              </p>
             </div>
           </div>
         </div>
 
         <div class="weather-item">
-          <p class="day">Mon</p>
           <div class="details">
-            <img src="images/clear.png" alt="weather-icon" />
-            <div class="temp">
-              <p>Max: <span class="max-temp">28 °C</span></p>
-              <p>Min: <span class="min-temp">30 °C</span></p>
-            </div>
-          </div>
-        </div>
-        <div class="weather-item">
-          <p class="day">Tue</p>
-          <div class="details">
-            <img src="images/clear.png" alt="weather-icon" />
-            <div class="temp">
-              <p>Max: <span class="max-temp">28 °C</span></p>
-              <p>Min: <span class="min-temp">30 °C</span></p>
-            </div>
-          </div>
-        </div>
-        <div class="weather-item">
-          <p class="day">Wed</p>
-          <div class="details">
-            <img src="images/clear.png" alt="weather-icon" />
-            <div class="temp">
-              <p>Max: <span class="max-temp">28 °C</span></p>
-              <p>Min: <span class="min-temp">30 °C</span></p>
-            </div>
-          </div>
-        </div>
-        <div class="weather-item">
-          <p class="day">Thur</p>
-          <div class="details">
-            <img src="images/clear.png" alt="weather-icon" />
-            <div class="temp">
-              <p>Max: <span class="max-temp">28 °C</span></p>
-              <p>Min: <span class="min-temp">30 °C</span></p>
+            <div class="box temp">
+              <p>
+                <i class="bx bx-up-arrow-circle"></i> Max:
+                <span class="max-temp">40 °C</span>
+              </p>
+              <p>
+                <i class="bx bx-down-arrow-circle"></i> Min:
+                <span class="min-temp">40 °C</span>
+              </p>
             </div>
           </div>
         </div>
@@ -125,8 +104,13 @@
         </p>
       </div>
     </div>
-
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <script src="script.js"></script>
+
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
   </body>
 </html>

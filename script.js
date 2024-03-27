@@ -24,12 +24,12 @@ setInterval(() => {
   const day = now.getDay();
   const hour = now.getHours();
   const minutes = now.getMinutes();
+  const minutesFormatted = minutes < 10 ? "0" + minutes : minutes;
   const amPm = hour >= 12 ? "PM" : "AM";
   const hoursFormatted = hour >= 13 ? hour % 12 : hour;
 
-  console.log(days[day] + "," + date + months[month]);
   time.innerHTML =
-    hoursFormatted + ":" + minutes + " " + `<span>${amPm}</span>`;
+    hoursFormatted + ":" + minutesFormatted + " " + `<span>${amPm}</span>`;
 
   date_el.innerHTML = days[day] + " , " + date + " " + months[month];
 }, 1000);
@@ -39,6 +39,7 @@ const container = document.querySelector(".container");
 const search = document.querySelector(".search-box button");
 const weatherBox = document.querySelector(".weather-box");
 const weatherDetails = document.querySelector(".weather-details");
+const additionalInfo = document.querySelector(".additional-info");
 const Error404 = document.querySelector(".error404");
 
 search.addEventListener("click", () => {
@@ -56,21 +57,28 @@ search.addEventListener("click", () => {
         container.style.height = "35rem";
         weatherBox.classList.remove("active");
         weatherDetails.classList.remove("active");
+        additionalInfo.classList.remove("active");
         Error404.classList.add("active");
 
         return;
       }
 
-      // container.style.height = "34.6875rem";
+      container.style.height = "50rem";
       weatherBox.classList.add("active");
       weatherDetails.classList.add("active");
+      additionalInfo.classList.add("active");
       Error404.classList.remove("active");
       const image = document.querySelector(".weather-box img");
       const temperature = document.querySelector(".weather-box .temperature");
+      const feel = document.querySelector(".weather-box .feels");
       const description = document.querySelector(".weather-box .description");
       const humidity = document.querySelector(
         ".weather-details .humidity span"
       );
+      const max_temp = document.querySelector(".weather-item .max-temp");
+      const min_temp = document.querySelector(".weather-item .min-temp");
+      const sunrise = document.querySelector(".weather-item .sunrise");
+      const sunset = document.querySelector(".weather-item .sunset");
       const wind = document.querySelector(".weather-details .wind span");
 
       switch (json.weather[0].main) {
@@ -96,10 +104,21 @@ search.addEventListener("click", () => {
           image.src = "images/cloud.png";
           break;
       }
-
+      document.querySelector(
+        ".weather-box .location .city"
+      ).innerHTML = `${json.name}`;
       temperature.innerHTML = `${parseInt(json.main.temp)}<span>°C</span>`;
+      feel.innerHTML = `${parseInt(json.main.feels_like)}<span>°C</span>`;
       description.innerHTML = `${json.weather[0].description}`;
       humidity.innerHTML = `${json.main.humidity}%`;
       wind.innerHTML = `${parseInt(json.wind.speed)}Km/h`;
+      max_temp.innerHTML = `${parseInt(json.main.temp_max)}<span>°C</span>`;
+      min_temp.innerHTML = `${parseInt(json.main.temp_min)}<span>°C</span>`;
+      sunrise.innerHTML = `${window
+        .moment(json.sys.sunrise * 1000)
+        .format("HH:mm a")}`;
+      sunset.innerHTML = `${window
+        .moment(json.sys.sunset * 1000)
+        .format("HH:mm a")}`;
     });
 });
