@@ -160,7 +160,7 @@ search.addEventListener("click", () => {
           infoWind.insertAdjacentElement("afterend", cloneInfoWind);
           infoSunrise.insertAdjacentElement("afterend", cloneInfoSunrise);
           infoSunset.insertAdjacentElement("afterend", cloneInfoSunset);
-        }, 2200);
+        }, 2000);
 
         const elcloneInfoWeather = document.querySelectorAll(
           ".info-weather.active-clone"
@@ -201,7 +201,7 @@ search.addEventListener("click", () => {
             elcloneInfoWindFirst.remove();
             elcloneInfoSunriseFirst.remove();
             elcloneInfoSunsetFirst.remove();
-          }, 2200);
+          }, 2000);
         }
       }
     });

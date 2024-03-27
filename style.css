@@ -5,8 +5,8 @@
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.cover {
-  background-image: url(images/bg.jpg);
+body {
+  background-image: url(images/bg3.jpg);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -137,6 +137,7 @@
 
 .weather-details {
   left: 0;
+  bottom: 0;
   width: 100%;
   padding: 0 1.25rem;
   display: flex;
@@ -171,7 +172,6 @@
 .weather-details.active .wind .info-wind,
 .weather-details.active .sunrise .info-sunrise,
 .weather-details.active .sunset .info-sunset {
-  transform: translateY(-100%);
   overflow: hidden;
 }
 
@@ -240,6 +240,7 @@
 
 .weather-details .box {
   border-radius: 0.3125rem;
+  /* color: rgb(77, 127, 150); */
   background-color: rgba(39, 100, 162, 0.3);
   backdrop-filter: blur(20px);
   margin: 0.125rem;
@@ -249,7 +250,7 @@
 }
 .bg-layer {
   border-radius: 0.3125rem;
-  background-color: rgba(39, 100, 162, 0.4);
+  background-color: rgba(77, 127, 150, 0.6);
   backdrop-filter: blur(50px);
   margin: 0.125rem;
   padding: 1rem;
@@ -313,9 +314,9 @@
   transition: transform 1s ease;
 }
 
-.active-clone #clone-info-humidity span,
-.active-clone #clone-info-wind span,
-.active-clone #clone-info-sunrise span,
-.active-clone #clone-info-sunset span {
+.active-clone#clone-info-humidity span,
+.active-clone#clone-info-wind span,
+.active-clone#clone-info-sunrise span,
+.active-clone#clone-info-sunset span {
   transform: translateY(0%);
 }
