@@ -1,3 +1,40 @@
+// updating the day&time section
+const time = document.querySelector(".time");
+const date_el = document.querySelector(".date");
+const am_pm = document.getElementById("am-pm");
+const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+setInterval(() => {
+  const now = new Date();
+  const month = now.getMonth();
+  const date = now.getDate();
+  const day = now.getDay();
+  const hour = now.getHours();
+  const minutes = now.getMinutes();
+  const amPm = hour >= 12 ? "PM" : "AM";
+  const hoursFormatted = hour >= 13 ? hour % 12 : hour;
+
+  console.log(days[day] + "," + date + months[month]);
+  time.innerHTML =
+    hoursFormatted + ":" + minutes + " " + `<span>${amPm}</span>`;
+
+  date_el.innerHTML = days[day] + " , " + date + " " + months[month];
+}, 1000);
+
+// updating weather info
 const container = document.querySelector(".container");
 const search = document.querySelector(".search-box button");
 const weatherBox = document.querySelector(".weather-box");
@@ -16,7 +53,7 @@ search.addEventListener("click", () => {
     .then((response) => response.json())
     .then((json) => {
       if (json.cod == "404") {
-        container.style.height = "25rem";
+        container.style.height = "35rem";
         weatherBox.classList.remove("active");
         weatherDetails.classList.remove("active");
         Error404.classList.add("active");
@@ -24,7 +61,7 @@ search.addEventListener("click", () => {
         return;
       }
 
-      container.style.height = "34.6875rem";
+      // container.style.height = "34.6875rem";
       weatherBox.classList.add("active");
       weatherDetails.classList.add("active");
       Error404.classList.remove("active");
