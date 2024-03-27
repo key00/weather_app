@@ -5,7 +5,7 @@
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-body {
+.cover {
   background-image: url(images/bg.jpg);
   background-position: center;
   background-size: cover;
@@ -19,13 +19,14 @@ body {
 .container {
   position: relative;
   width: 30rem;
-  /* height: 11.25rem; */
+  height: 11.25rem;
   background-color: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   border-radius: 0.625rem;
   padding: 1.25rem;
   margin: 0.9375rem;
   color: #fff;
+  transition: height 0.6s ease;
 }
 
 .today-info {
@@ -139,11 +140,11 @@ body {
   width: 100%;
   padding: 0 1.25rem;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 .weather-details i {
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin-right: 0.625rem;
 }
 
@@ -153,18 +154,25 @@ body {
 .weather-details .sunset {
   display: flex;
   align-items: center;
-  /* width: 50%; */
   padding: 10px 0;
+  transform: translateY(-100%);
 }
 
-.box .details-1 {
-  padding-left: 1.5rem;
-  justify-content: flex-start;
+.weather-details.active .humidity,
+.weather-details.active .wind,
+.weather-details.active .sunrise,
+.weather-details.active .sunset {
+  transform: translateY(0%);
+  transition: transform 1s ease;
+  transition-delay: 1.2s;
 }
 
-.box .details-2 {
-  padding-right: 1.5rem;
-  justify-content: flex-end;
+.weather-details.active .humidity .info-humidity,
+.weather-details.active .wind .info-wind,
+.weather-details.active .sunrise .info-sunrise,
+.weather-details.active .sunset .info-sunset {
+  transform: translateY(-100%);
+  overflow: hidden;
 }
 
 .weather-details span {
@@ -182,6 +190,7 @@ body {
 .weather-details,
 .additional-info,
 .error404 {
+  overflow: hidden;
   visibility: hidden;
 }
 
@@ -190,6 +199,29 @@ body {
 .additional-info.active,
 .error404.active {
   visibility: visible;
+}
+
+.weather-box .box,
+.error404 .box {
+  transform: translateY(-100%);
+}
+.weather-box.active .box,
+.error404.active .box {
+  transform: translateY(0%);
+  transition: transform 1s ease;
+  transition-delay: 0.6s;
+}
+
+.weather-box .box .info-weather {
+  transform: translateY(-120%);
+}
+.container.active .weather-box .box .info-weather,
+.container.active .weather-details.active .humidity .info-humidity,
+.container.active .weather-details.active .wind .info-wind,
+.container.active .weather-details.active .sunrise .info-sunrise,
+.container.active .weather-details.active .sunset .info-sunset {
+  transform: translateY(0%);
+  transition: transform 1s ease;
 }
 
 .additional-info .weather-item img {
@@ -206,18 +238,22 @@ body {
   width: 100%;
 }
 
-/* .additional-info .weather-item .details {
-  display: flex;
-  align-items: center;
-} */
 .weather-details .box {
   border-radius: 0.3125rem;
   background-color: rgba(39, 100, 162, 0.3);
+  backdrop-filter: blur(20px);
+  margin: 0.125rem;
+  padding: 0.625rem 0.625rem 0.5rem 1rem;
+  width: 180px;
+  z-index: -1;
+}
+.bg-layer {
+  border-radius: 0.3125rem;
+  background-color: rgba(39, 100, 162, 0.4);
   backdrop-filter: blur(50px);
-  margin: 0.3125rem;
-  padding: 0.625rem 0.625rem 0.625rem 1.5rem;
-  width: 170px;
-  /* text-align: center; */
+  margin: 0.125rem;
+  padding: 1rem;
+  width: 11rem;
 }
 .weather-item .day {
   text-align: center;
@@ -240,4 +276,46 @@ body {
 .error404 p {
   font-size: 1.25rem;
   font-weight: 500;
+}
+.city-hidden {
+  display: none;
+}
+
+#clone-info-weather,
+#clone-info-humidity,
+#clone-info-wind,
+#clone-info-sunrise,
+#clone-info-sunset {
+  position: absolute;
+  transform: translateY(-100%);
+}
+
+#clone-info-weather .weather {
+  transform: translateY(120%);
+  transition: transform 1s ease, opacity 0s;
+  transition-delay: 0s, 2s;
+}
+
+.weather-box:not(.active) #clone-info-weather .weather {
+  opacity: 0;
+  transition-delay: 0s;
+}
+
+.active-clone#clone-info-weather .weather {
+  transform: translateY(0%);
+}
+
+#clone-info-humidity span,
+#clone-info-wind span,
+#clone-info-sunrise span,
+#clone-info-sunset span {
+  transform: translateY(100%);
+  transition: transform 1s ease;
+}
+
+.active-clone #clone-info-humidity span,
+.active-clone #clone-info-wind span,
+.active-clone #clone-info-sunrise span,
+.active-clone #clone-info-sunset span {
+  transform: translateY(0%);
 }
