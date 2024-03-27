@@ -77,8 +77,8 @@ search.addEventListener("click", () => {
       );
       const max_temp = document.querySelector(".weather-item .max-temp");
       const min_temp = document.querySelector(".weather-item .min-temp");
-      const sunrise = document.querySelector(".weather-item .sunrise");
-      const sunset = document.querySelector(".weather-item .sunset");
+      const sunrise = document.querySelector(".weather-details .sunrise span");
+      const sunset = document.querySelector(".weather-details .sunset span");
       const wind = document.querySelector(".weather-details .wind span");
 
       switch (json.weather[0].main) {
@@ -112,8 +112,8 @@ search.addEventListener("click", () => {
       description.innerHTML = `${json.weather[0].description}`;
       humidity.innerHTML = `${json.main.humidity}%`;
       wind.innerHTML = `${parseInt(json.wind.speed)}Km/h`;
-      max_temp.innerHTML = `${parseInt(json.main.temp_max)}<span>°C</span>`;
-      min_temp.innerHTML = `${parseInt(json.main.temp_min)}<span>°C</span>`;
+      // max_temp.innerHTML = `${parseInt(json.main.temp_max)}<span>°C</span>`;
+      // min_temp.innerHTML = `${parseInt(json.main.temp_min)}<span>°C</span>`;
       sunrise.innerHTML = `${window
         .moment(json.sys.sunrise * 1000)
         .format("HH:mm a")}`;
